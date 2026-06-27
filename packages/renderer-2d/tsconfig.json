@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "paths": {
+      "@eldrex/anomotionjs-core": ["../core/dist/index.d.ts"],
+      "@eldrex/anomotionjs-text": ["../text/dist/index.d.ts"]
+    }
+  },
+  "include": ["src/**/*"]
+}

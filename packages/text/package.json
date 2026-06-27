@@ -1,0 +1,25 @@
+{
+  "name": "@eldrex/anomotionjs-text",
+  "type": "module",
+  "version": "1.0.1",
+  "description": "Text parsing, HTML segmenting, layout, and glyph splitting module for AnomotionJS",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "keywords": [
+    "text",
+    "parsing",
+    "layout",
+    "glyph",
+    "splitting"
+  ],
+  "author": "Eldrex Delos Reyes Bula",
+  "license": "MIT",
+  "dependencies": {
+    "@eldrex/anomotionjs-core": "^1.0.1"
+  }
+}

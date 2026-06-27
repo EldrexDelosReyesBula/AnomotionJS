@@ -1,0 +1,22 @@
+{
+  "name": "@eldrex/anomotionjs-cache",
+  "type": "module",
+  "version": "1.0.1",
+  "description": "IndexedDB caching bootloader for offline-first operations in AnomotionJS",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "keywords": [
+    "caching",
+    "indexeddb",
+    "offline-first",
+    "bootloader"
+  ],
+  "author": "Eldrex Delos Reyes Bula",
+  "license": "MIT",
+  "dependencies": {}
+}

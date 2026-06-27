@@ -1,0 +1,24 @@
+{
+  "name": "anomotionjs-monorepo",
+  "private": true,
+  "version": "1.0.1",
+  "description": "Monorepo for AnomotionJS - High performance offline-first text animation engine",
+  "author": "Eldrex Delos Reyes Bula",
+  "workspaces": [
+    "packages/*",
+    "playground",
+    "docs"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "postbuild": "node scripts/merge-dist.mjs",
+    "dev": "turbo run dev --parallel",
+    "test": "turbo run test",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "@types/three": "^0.185.0",
+    "turbo": "^1.10.15",
+    "typescript": "^5.2.2"
+  }
+}

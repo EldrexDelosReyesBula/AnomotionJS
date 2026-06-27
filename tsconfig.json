@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@eldrex/anomotionjs-core": ["packages/core/src/index.ts"],
+      "@eldrex/anomotionjs-text": ["packages/text/src/index.ts"],
+      "@eldrex/anomotionjs-renderer-2d": ["packages/renderer-2d/src/index.ts"],
+      "@eldrex/anomotionjs-renderer-3d": ["packages/renderer-3d/src/index.ts"],
+      "@eldrex/anomotionjs-renderer-gpu": ["packages/renderer-gpu/src/index.ts"],
+      "@eldrex/anomotionjs-physics": ["packages/physics/src/index.ts"],
+      "@eldrex/anomotionjs-plugins": ["packages/plugins/src/index.ts"],
+      "@eldrex/anomotionjs-cache": ["packages/cache/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

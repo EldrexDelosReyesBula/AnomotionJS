@@ -1,0 +1,25 @@
+{
+  "name": "@eldrex/anomotionjs-renderer-2d",
+  "type": "module",
+  "version": "1.0.1",
+  "description": "2D DOM / Canvas rendering adapters for AnomotionJS",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "keywords": [
+    "renderer",
+    "canvas",
+    "dom",
+    "css"
+  ],
+  "author": "Eldrex Delos Reyes Bula",
+  "license": "MIT",
+  "dependencies": {
+    "@eldrex/anomotionjs-core": "^1.0.1",
+    "@eldrex/anomotionjs-text": "^1.0.1"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+/dist/
+.env
+.npmrc
+.turbo/
+**/.vitepress/cache/
+**/.vitepress/dist/
+.DS_Store
+*.log

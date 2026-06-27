@@ -1,0 +1,17 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "installCommand": "npm install",
+  "routes": [
+    { "handle": "filesystem" },
+    {
+      "src": "/playground/(.*)",
+      "dest": "/playground/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

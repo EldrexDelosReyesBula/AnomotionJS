@@ -1,0 +1,35 @@
+{
+  "name": "@eldrex/anomotionjs-core",
+  "type": "module",
+  "version": "1.0.1",
+  "description": "Core animation engine, timeline, and scheduler for AnomotionJS",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "animation",
+    "text-animation",
+    "engine",
+    "timeline",
+    "performance",
+    "offline-first"
+  ],
+  "author": "Eldrex Delos Reyes Bula",
+  "license": "MIT",
+  "dependencies": {}
+}
