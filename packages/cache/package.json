@@ -1,7 +1,7 @@
 {
   "name": "@eldrex/anomotionjs-cache",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "IndexedDB caching bootloader for offline-first operations in AnomotionJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

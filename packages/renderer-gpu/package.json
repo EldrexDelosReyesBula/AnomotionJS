@@ -1,7 +1,7 @@
 {
   "name": "@eldrex/anomotionjs-renderer-gpu",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Experimental WebGPU renderer adapter for high performance particle text inside AnomotionJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,7 @@
   "author": "Eldrex Delos Reyes Bula",
   "license": "MIT",
   "dependencies": {
-    "@eldrex/anomotionjs-core": "^1.0.1",
-    "@eldrex/anomotionjs-renderer-2d": "^1.0.1"
+    "@eldrex/anomotionjs-core": "^1.0.2",
+    "@eldrex/anomotionjs-renderer-2d": "^1.0.2"
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "@eldrex/anomotionjs-core",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Core animation engine, timeline, and scheduler for AnomotionJS",
   "main": "./dist/index.js",
   "module": "./dist/index.js",

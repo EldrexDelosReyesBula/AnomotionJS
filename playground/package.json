@@ -1,6 +1,6 @@
 {
   "name": "anomotionjs-playground",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "Standalone interactive Vite playground for AnomotionJS",
   "scripts": {
@@ -9,13 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@eldrex/anomotionjs-core": "1.0.1",
-    "@eldrex/anomotionjs-text": "1.0.1",
-    "@eldrex/anomotionjs-renderer-2d": "1.0.1",
-    "@eldrex/anomotionjs-renderer-3d": "1.0.1",
-    "@eldrex/anomotionjs-renderer-gpu": "1.0.1",
-    "@eldrex/anomotionjs-physics": "1.0.1",
-    "@eldrex/anomotionjs-cache": "1.0.1"
+    "@eldrex/anomotionjs-core": "^1.0.2",
+    "@eldrex/anomotionjs-text": "^1.0.2",
+    "@eldrex/anomotionjs-renderer-2d": "^1.0.2",
+    "@eldrex/anomotionjs-renderer-3d": "^1.0.2",
+    "@eldrex/anomotionjs-renderer-gpu": "^1.0.2",
+    "@eldrex/anomotionjs-physics": "^1.0.2",
+    "@eldrex/anomotionjs-cache": "^1.0.2"
   },
   "devDependencies": {
     "vite": "^4.5.0",

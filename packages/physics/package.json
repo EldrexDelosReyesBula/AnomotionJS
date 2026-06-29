@@ -1,7 +1,7 @@
 {
   "name": "@eldrex/anomotionjs-physics",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lightweight physics module (Verlet integration, springs, gravity) for AnomotionJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,6 +19,6 @@
   "author": "Eldrex Delos Reyes Bula",
   "license": "MIT",
   "dependencies": {
-    "@eldrex/anomotionjs-core": "^1.0.1"
+    "@eldrex/anomotionjs-core": "^1.0.2"
   }
 }

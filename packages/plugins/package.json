@@ -1,7 +1,7 @@
 {
   "name": "@eldrex/anomotionjs-plugins",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Official plugins and utility extensions (GSAP adapter, advanced splitting) for AnomotionJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,6 +18,6 @@
   "author": "Eldrex Delos Reyes Bula",
   "license": "MIT",
   "dependencies": {
-    "@eldrex/anomotionjs-core": "^1.0.1"
+    "@eldrex/anomotionjs-core": "^1.0.2"
   }
 }

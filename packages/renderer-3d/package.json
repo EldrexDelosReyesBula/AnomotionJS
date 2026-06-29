@@ -1,7 +1,7 @@
 {
   "name": "@eldrex/anomotionjs-renderer-3d",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "3D WebGL / Three.js renderer adapter with SDF Troika text for AnomotionJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,7 +20,7 @@
   "author": "Eldrex Delos Reyes Bula",
   "license": "MIT",
   "dependencies": {
-    "@eldrex/anomotionjs-core": "^1.0.1",
+    "@eldrex/anomotionjs-core": "^1.0.2",
     "three": "^0.160.0",
     "troika-three-text": "^0.49.0"
   }

@@ -1,7 +1,7 @@
 {
   "name": "anomotionjs-monorepo",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Monorepo for AnomotionJS - High performance offline-first text animation engine",
   "author": "Eldrex Delos Reyes Bula",
   "workspaces": [
