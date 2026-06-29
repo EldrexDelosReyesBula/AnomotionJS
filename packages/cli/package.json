@@ -1,0 +1,10 @@
+{
+  "name": "anomotionjs",
+  "version": "1.0.2",
+  "description": "Command line tool for AnomotionJS text animation engine",
+  "type": "module",
+  "bin": {
+    "anomotionjs": "./bin/anomotionjs"
+  },
+  "dependencies": {}
+}

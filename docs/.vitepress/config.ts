@@ -36,6 +36,7 @@ export default withMermaid({
     logo: '/logo.svg',
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
+      { text: 'Presets', link: '/presets' },
       { text: 'API Reference', link: '/api/core' },
       { text: 'Playground', link: 'https://anomotionjs.vercel.app/playground/' }
     ],
@@ -44,6 +45,7 @@ export default withMermaid({
         text: 'Getting Started',
         items: [
           { text: 'Getting Started', link: '/guide/getting-started' },
+          { text: 'Presets Gallery', link: '/presets' },
           { text: 'Installation', link: '/guide/installation' },
           { text: 'Quick Start', link: '/guide/quick-start' },
           { text: 'Core Concepts', link: '/guide/core-concepts' }

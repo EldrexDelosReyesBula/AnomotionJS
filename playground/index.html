@@ -3,24 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AnomotionJS - Developer Playground & Studio</title>
+  <title>AnomotionJS - Developer Playground & Studio v1.0.2</title>
   <meta name="description" content="Interactive Developer Playground & Studio for AnomotionJS - the high-performance offline-first text animation engine. Build, test, and export premium animations in real time.">
-  <meta name="keywords" content="anomotionjs, text animation, playground, web animation, javascript animation, css animation, canvas animation, threejs, webgpu, animation studio">
-  <meta name="author" content="Eldrex Delos Reyes Bula">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://anomotionjs.vercel.app/playground/">
-  <meta property="og:title" content="AnomotionJS - Developer Playground & Studio">
-  <meta property="og:description" content="Interactive Developer Playground & Studio for AnomotionJS - the high-performance offline-first text animation engine. Build, test, and export premium animations in real time.">
-  <meta property="og:image" content="https://anomotionjs.vercel.app/word-mark.png">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://anomotionjs.vercel.app/playground/">
-  <meta property="twitter:title" content="AnomotionJS - Developer Playground & Studio">
-  <meta property="twitter:description" content="Interactive Developer Playground & Studio for AnomotionJS - the high-performance offline-first text animation engine. Build, test, and export premium animations in real time.">
-  <meta property="twitter:image" content="https://anomotionjs.vercel.app/word-mark.png">
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/playground/logo.svg">
@@ -31,32 +15,32 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   
   <style>
-    /* Vercel-Style Premium Theme */
+    /* Vercel-Style Premium Theme with Purple-Cyan Accents */
     :root {
-      --bg-primary: #000000;
-      --bg-secondary: #0a0a0a;
-      --bg-tertiary: #111111;
+      --bg-primary: #040406;
+      --bg-secondary: #0a0a0f;
+      --bg-tertiary: #12121e;
       --border-color: rgba(255, 255, 255, 0.08);
       --border-hover: rgba(255, 255, 255, 0.16);
-      --border-focus: #0070f3;
-      --text-primary: #ffffff;
-      --text-secondary: #888888;
-      --text-muted: #444444;
+      --border-focus: #7c3aed;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #475569;
       
-      --accent: #0070f3;
-      --accent-glow: rgba(0, 112, 243, 0.15);
-      --accent-hover: #0060df;
-      --accent-secondary: #00df89;
+      --accent: #8b5cf6;
+      --accent-glow: rgba(139, 92, 246, 0.2);
+      --accent-hover: #a78bfa;
+      --accent-secondary: #06b6d4;
       
-      --radius-sm: 4px;
-      --radius-md: 8px;
-      --radius-lg: 12px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
       
       --font-sans: 'Inter', sans-serif;
       --font-display: 'Outfit', sans-serif;
       --font-mono: 'Fira Code', monospace;
       
-      --sidebar-width: 460px;
+      --panel-width: 420px;
     }
 
     * {
@@ -78,45 +62,43 @@
 
     /* Custom Scrollbars */
     ::-webkit-scrollbar {
-      width: 4px;
-      height: 4px;
+      width: 6px;
+      height: 6px;
     }
     ::-webkit-scrollbar-track {
       background: var(--bg-primary);
     }
     ::-webkit-scrollbar-thumb {
       background: var(--border-color);
-      border-radius: 2px;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--border-hover);
     }
 
-    .app-container {
-      display: flex;
-      flex: 1;
-      height: calc(100vh - 64px);
-      overflow: hidden;
-    }
-
+    /* Navbar */
     .navbar {
       height: 64px;
-      background-color: var(--bg-primary);
+      background-color: var(--bg-secondary);
       border-bottom: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 24px;
       z-index: 10;
+      backdrop-filter: blur(12px);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       cursor: pointer;
     }
 
     .brand-logo {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       background-image: url('/logo.svg');
       background-size: contain;
       background-repeat: no-repeat;
@@ -124,23 +106,29 @@
     }
 
     .brand-title {
-      font-weight: 700;
-      font-size: 16px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 20px;
       letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--accent-secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .brand-tagline {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-secondary);
       border-left: 1px solid var(--border-color);
-      padding-left: 16px;
+      padding-left: 12px;
       margin-left: 4px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     .nav-tabs {
       display: flex;
-      gap: 24px;
-      margin-left: 40px;
+      gap: 20px;
     }
 
     .nav-tab {
@@ -148,29 +136,58 @@
       color: var(--text-secondary);
       cursor: pointer;
       font-weight: 500;
-      transition: color 0.15s ease;
+      transition: all 0.15s ease;
       background: none;
       border: none;
       outline: none;
       text-decoration: none;
+      position: relative;
+      padding: 8px 12px;
     }
 
     .nav-tab:hover, .nav-tab.active {
       color: var(--text-primary);
     }
+    
+    .nav-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-secondary), var(--accent));
+      box-shadow: 0 0 10px var(--accent);
+    }
 
-    .sidebar {
-      width: var(--sidebar-width);
+    /* Three Panel Layout */
+    .app-container {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 64px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Side Panels */
+    .panel-left, .panel-right {
+      width: var(--panel-width);
       background-color: var(--bg-secondary);
       border-right: 1px solid var(--border-color);
       display: flex;
       flex-direction: column;
       height: 100%;
       overflow-y: auto;
+      z-index: 5;
+    }
+    
+    .panel-right {
+      border-right: none;
+      border-left: 1px solid var(--border-color);
     }
 
-    .sidebar-section {
-      padding: 24px;
+    .panel-section {
+      padding: 20px;
       border-bottom: 1px solid var(--border-color);
     }
 
@@ -180,9 +197,104 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--text-secondary);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
+    /* Left Panel View Toggles */
+    .view-toggle-bar {
+      display: flex;
+      background-color: var(--bg-primary);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      margin-bottom: 16px;
+    }
+
+    .view-toggle-btn {
+      flex: 1;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .view-toggle-btn.active {
+      background-color: var(--bg-tertiary);
+      color: var(--text-primary);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    /* Node Graph Canvas Area */
+    .node-graph-container {
+      flex: 1;
+      position: relative;
+      background-color: #050508;
+      background-image: radial-gradient(rgba(139, 92, 246, 0.15) 1px, transparent 0);
+      background-size: 16px 16px;
+      overflow: hidden;
+      display: none; /* Toggleable */
+      min-height: 400px;
+    }
+    
+    .node-graph-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .node-card {
+      position: absolute;
+      width: 170px;
+      background-color: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      cursor: grab;
+      user-select: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      transition: border-color 0.2s;
+    }
+    
+    .node-card:active {
+      cursor: grabbing;
+      border-color: var(--accent);
+    }
+
+    .node-title {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--accent-secondary);
+    }
+
+    .node-port {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .node-port-in { left: -4px; }
+    .node-port-out { right: -4px; }
+
+    /* Center Preview Workspace */
     .workspace {
       flex: 1;
       display: flex;
@@ -190,6 +302,7 @@
       background-color: var(--bg-primary);
       position: relative;
       overflow: hidden;
+      height: 100%;
     }
 
     .preview-container {
@@ -199,48 +312,24 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      overflow: hidden;
       background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.015) 1px, transparent 0);
       background-size: 20px 20px;
-    }
-
-    .bg-watermark-layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      z-index: 1;
-      opacity: 0.03;
-      user-select: none;
-    }
-
-    .bg-watermark-row {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      font-weight: 800;
-      white-space: nowrap;
+      padding: 24px;
     }
 
     .preview-canvas-wrapper {
       position: relative;
-      width: 92%;
-      height: 65%;
+      width: 100%;
+      height: 70%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border-color);
-      background-color: rgba(10, 10, 10, 0.6);
-      backdrop-filter: blur(12px);
+      background-color: rgba(6, 6, 10, 0.85);
+      backdrop-filter: blur(20px);
       padding: 40px;
       overflow: hidden;
-      z-index: 2;
     }
 
     .anomotion-target-dom {
@@ -256,33 +345,271 @@
       perspective: 1000px;
     }
 
+    /* Transform Origin Overlay Drag Handle */
+    .origin-handle {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      background-color: #000;
+      cursor: move;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .origin-handle::before, .origin-handle::after {
+      content: '';
+      position: absolute;
+      background-color: var(--accent);
+    }
+    .origin-handle::before { width: 1px; height: 24px; }
+    .origin-handle::after { width: 24px; height: 1px; }
+
+    /* Compass Rose Direction Selector Control */
+    .compass-control {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      border: 2px solid var(--border-color);
+      border-radius: 50%;
+      background-color: var(--bg-primary);
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    .compass-arrow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 2px;
+      height: 36px;
+      background: linear-gradient(180deg, var(--accent-secondary), transparent);
+      transform-origin: 50% 100%;
+      transform: translate(-50%, -100%) rotate(0deg);
+      transition: transform 0.2s ease;
+    }
+    
+    .compass-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      transform: translate(-50%, -50%);
+    }
+    
+    .compass-tick {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: var(--text-muted);
+    }
+
+    /* Grid Alignment Overlay */
+    .grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      border: 1px dashed rgba(255,255,255,0.05);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    
+    .grid-overlay div {
+      border: 1px dashed rgba(255,255,255,0.03);
+    }
+
+    /* Alignment Grid Control */
+    .align-grid-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      width: 110px;
+      margin: 0 auto;
+    }
+    
+    .align-btn {
+      width: 32px;
+      height: 32px;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+    }
+    
+    .align-btn.active {
+      background-color: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    /* Controls Group */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    select, input[type="text"], input[type="color"], textarea {
+      width: 100%;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      padding: 8px 12px;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    select:focus, input:focus, textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .range-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .range-wrapper span {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      min-width: 38px;
+      text-align: right;
+      color: var(--text-secondary);
+    }
+
+    input[type="range"] {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--border-color);
+      height: 4px;
+      border-radius: 2px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--text-primary);
+      cursor: pointer;
+      box-shadow: 0 0 4px var(--accent);
+    }
+
+    .segmented-control {
+      display: flex;
+      background-color: var(--bg-primary);
+      padding: 3px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+
+    .segmented-btn {
+      flex: 1;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      padding: 6px 8px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .segmented-btn.active {
+      background-color: var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .preset-chip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .preset-chip {
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 8px;
+      text-align: center;
+      font-size: 11px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+    }
+
+    .preset-chip.active {
+      background: linear-gradient(135deg, var(--accent-secondary), var(--accent));
+      border-color: var(--accent);
+      color: #000;
+      font-weight: 600;
+    }
+
+    /* Interactive Timeline Controls */
     .anime-controls {
       display: flex;
       align-items: center;
-      gap: 16px;
-      width: 92%;
+      gap: 14px;
+      width: 100%;
       background-color: var(--bg-secondary);
       border: 1px solid var(--border-color);
-      padding: 12px 24px;
+      padding: 12px 20px;
       border-radius: var(--radius-md);
       margin-top: 16px;
-      z-index: 5;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     }
 
     .anime-btn {
       background: none;
       border: none;
       color: var(--text-secondary);
-      font-size: 16px;
+      font-size: 14px;
       cursor: pointer;
       transition: color 0.15s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      border: 1px solid transparent;
     }
 
     .anime-btn:hover {
@@ -324,141 +651,24 @@
       min-width: 48px;
     }
 
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-label {
-      display: block;
-      font-size: 11px;
-      color: var(--text-secondary);
-      margin-bottom: 8px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .input-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    select, input[type="text"], input[type="color"], textarea {
-      width: 100%;
-      background-color: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      color: var(--text-primary);
-      padding: 10px 14px;
-      font-size: 13px;
-      outline: none;
-    }
-
-    select:focus, input:focus, textarea:focus {
-      border-color: var(--text-primary);
-    }
-
-    .range-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .range-wrapper span {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      min-width: 38px;
-      text-align: right;
-      color: var(--text-secondary);
-    }
-
-    input[type="range"] {
-      flex: 1;
-      -webkit-appearance: none;
-      appearance: none;
-      background: var(--border-color);
-      height: 4px;
-      border-radius: 2px;
-      outline: none;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--text-primary);
-      cursor: pointer;
-    }
-
-    .segmented-control {
-      display: flex;
-      background-color: var(--bg-primary);
-      padding: 3px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-color);
-    }
-
-    .segmented-btn {
-      flex: 1;
-      background: none;
-      border: none;
-      color: var(--text-secondary);
-      padding: 6px 12px;
-      font-size: 11px;
-      font-weight: 500;
-      cursor: pointer;
-      border-radius: 2px;
-      transition: all 0.15s ease;
-      white-space: nowrap;
-    }
-
-    .segmented-btn.active {
-      background-color: var(--border-color);
-      color: var(--text-primary);
-    }
-
-    .preset-chip-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .preset-chip {
-      background-color: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      padding: 10px;
-      text-align: center;
-      font-size: 11px;
-      cursor: pointer;
-      color: var(--text-secondary);
-    }
-
-    .preset-chip.active {
-      background-color: var(--text-primary);
-      border-color: var(--text-primary);
-      color: var(--bg-primary);
-    }
-
+    /* Blueprint Terminal Panel */
     .terminal-container {
-      height: 240px;
-      background-color: var(--bg-primary);
+      flex: 1;
+      background-color: #020204;
       border-top: 1px solid var(--border-color);
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
 
     .terminal-header {
-      height: 40px;
+      height: 38px;
       background-color: var(--bg-secondary);
       border-bottom: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 20px;
+      padding: 0 16px;
     }
 
     .framework-selector-wrapper {
@@ -468,7 +678,7 @@
     }
 
     .framework-select {
-      background-color: var(--bg-secondary);
+      background-color: var(--bg-primary);
       border: 1px solid var(--border-color);
       color: var(--text-primary);
       font-size: 11px;
@@ -480,11 +690,31 @@
 
     .terminal-body {
       flex: 1;
-      padding: 20px;
+      padding: 16px;
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12px;
       overflow-y: auto;
-      color: #eaeaea;
+      color: #e2e8f0;
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      padding: 4px 8px;
+      font-size: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .copy-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--accent);
     }
 
     .docs-viewer-container {
@@ -500,26 +730,6 @@
       color: #eaeaea;
     }
 
-    .docs-viewer-container h1, .docs-viewer-container h2, .docs-viewer-container h3 {
-      font-family: var(--font-display);
-      color: var(--text-primary);
-      font-weight: 800;
-      margin-top: 32px;
-      margin-bottom: 16px;
-    }
-
-    .docs-viewer-container h1 { font-size: 2.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
-    .docs-viewer-container h2 { font-size: 1.8rem; }
-    .docs-viewer-container p { margin-bottom: 20px; font-size: 15px; color: #bbbbbb; }
-    .docs-viewer-container pre {
-      background-color: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      margin-bottom: 24px;
-      overflow-x: auto;
-    }
-
     .playground-view {
       display: flex;
       flex: 1;
@@ -529,248 +739,467 @@
 
     @media (max-width: 900px) {
       .app-container {
+        flex-direction: column;
+        overflow-y: auto;
         height: auto;
-        overflow: visible;
       }
-      body {
-        height: auto;
-        overflow: auto;
-      }
-      .playground-view {
-        flex-direction: column-reverse;
-      }
-      .sidebar {
+      .panel-left, .panel-right {
         width: 100%;
         height: auto;
-        border-right: none;
-        border-top: 1px solid var(--border-color);
-        overflow-y: visible;
+        border: none;
       }
       .workspace {
         height: 60vh;
-        min-height: 400px;
-        flex: none;
-      }
-      .preview-canvas-wrapper {
-        width: 95%;
-        height: 70%;
-        padding: 20px;
-      }
-      .brand-tagline {
-        display: none;
-      }
-      .navbar {
-        padding: 0 16px;
-      }
-      .nav-tabs {
-        margin-left: 16px;
-        gap: 16px;
+        min-height: 420px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Vercel Navbar -->
+  <!-- Top Navigation Bar -->
   <header class="navbar">
     <div class="brand" id="brandBtn">
       <div class="brand-logo"></div>
       <div>
         <span class="brand-title">AnomotionJS</span>
-        <span class="brand-tagline">Playground Module</span>
+        <span class="brand-tagline">Playground Studio</span>
       </div>
     </div>
     <div class="nav-tabs">
       <button class="nav-tab active" id="navTabPlayground">Playground</button>
-      <a class="nav-tab" id="navTabDocs" href="https://anomotionjs.vercel.app/">Documentation</a>
+      <a class="nav-tab" id="navTabDocs" href="https://anomotionjs.vercel.app/" target="_blank">Documentation</a>
     </div>
   </header>
 
   <div class="app-container">
     
-    <!-- Playground Design Studio View -->
-    <div class="playground-view" id="playgroundView">
-      <aside class="sidebar">
-        <div class="sidebar-section">
-          <h3 class="section-title">Presets Catalog</h3>
-          <div class="preset-chip-grid">
-            <div class="preset-chip active" data-preset="wave">Wave</div>
-            <div class="preset-chip" data-preset="glitch">Glitch</div>
-            <div class="preset-chip" data-preset="explode">Explode</div>
-            <div class="preset-chip" data-preset="reveal">Reveal</div>
-            <div class="preset-chip" data-preset="float">Float</div>
-            <div class="preset-chip" data-preset="vortex">Vortex</div>
-            <div class="preset-chip" data-preset="distortion">Distort</div>
-            <div class="preset-chip" data-preset="spiral">Spiral</div>
-            <div class="preset-chip" data-preset="morph">Morph</div>
+    <!-- Left Panel: Pipeline Node Graph or Code Output -->
+    <aside class="panel-left">
+      <div class="panel-section" style="padding-bottom: 10px;">
+        <div class="view-toggle-bar">
+          <button class="view-toggle-btn active" id="btnShowCode">Code Blueprint</button>
+          <button class="view-toggle-btn" id="btnShowGraph">Pipeline Graph</button>
+          <button class="view-toggle-btn" id="btnShowEasing">Easing Canvas</button>
+        </div>
+      </div>
+      
+      <!-- View 1: Usage Blueprint -->
+      <div class="terminal-container" id="codeViewContainer">
+        <div class="terminal-header">
+          <span style="font-size: 12px; font-weight: 500; color: var(--text-secondary);">Framework Blueprint</span>
+          <div class="framework-selector-wrapper">
+            <select class="framework-select" id="exportFramework">
+              <option value="vanilla">Vanilla JS</option>
+              <option value="react">React Component</option>
+              <option value="vue">Vue 3 Composable</option>
+              <option value="svelte">Svelte Action</option>
+              <option value="cdn">CDN Script</option>
+            </select>
+          </div>
+        </div>
+        <div class="terminal-body" style="position: relative;">
+          <button class="copy-btn" id="btnDownloadHtml" style="right: 70px; background-color: var(--bg-primary);">Download</button>
+          <button class="copy-btn" id="btnCopyCode">Copy</button>
+          <pre><code id="codeSnippet" class="code-output"></code></pre>
+        </div>
+      </div>
+
+      <!-- View 3: Easing Curve Editor -->
+      <div class="terminal-container" id="easingViewContainer" style="display: none; padding: 20px; flex-direction: column; height: calc(100% - 70px); overflow-y: auto;">
+        <div style="margin-bottom: 12px; font-weight: 600; color: var(--text-primary); font-size: 14px;">
+          Curve Editor & Spring Solver
+        </div>
+        <div class="input-row" style="gap: 12px; margin-bottom: 14px;">
+          <div class="form-group" style="flex: 1;">
+            <label class="form-label" for="easeTypeSelect">Curve Model</label>
+            <select id="easeTypeSelect" class="framework-select" style="width: 100%; height: 32px; background: var(--bg-primary);">
+              <option value="bezier">Cubic Bezier</option>
+              <option value="spring">RK4 Physics Spring</option>
+              <option value="steps">Step Easing</option>
+            </select>
           </div>
         </div>
 
-        <div class="sidebar-section">
-          <h3 class="section-title">Custom Equation Engine</h3>
-          <div class="form-group">
-            <label class="form-label" for="customEq">Math Equation Tweak (Y-offset)</label>
-            <textarea id="customEq" rows="2" placeholder="Math.sin(t * Math.PI * 2) * -30"></textarea>
+        <!-- Spring Parameters -->
+        <div id="springParams" class="input-row" style="display: none; gap: 12px; margin-bottom: 14px;">
+          <div class="form-group" style="flex: 1;">
+            <label class="form-label" for="springStiffness">Stiffness (10–300)</label>
+            <input type="range" id="springStiffness" min="10" max="300" value="170">
           </div>
-          <div class="input-row">
-            <div class="form-group">
-              <label class="form-label" for="frequency">Wave Frequency</label>
-              <div class="range-wrapper">
-                <input type="range" id="frequency" min="1" max="15" step="0.5" value="2.0">
-                <span id="val-frequency">2.0</span>
-              </div>
+          <div class="form-group" style="flex: 1;">
+            <label class="form-label" for="springDamping">Damping (5–60)</label>
+            <input type="range" id="springDamping" min="5" max="60" value="26">
+          </div>
+        </div>
+
+        <!-- Steps Parameters -->
+        <div id="stepsParams" class="input-row" style="display: none; gap: 12px; margin-bottom: 14px;">
+          <div class="form-group" style="flex: 1;">
+            <label class="form-label" for="stepsCount">Steps (2–30)</label>
+            <input type="range" id="stepsCount" min="2" max="30" value="8">
+          </div>
+        </div>
+
+        <!-- Easing Plot Canvas -->
+        <div style="position: relative; width: 100%; height: 260px; background: #010103; border: 1px solid var(--border-color); border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 14px;">
+          <canvas id="easingCurveCanvas" style="width: 100%; height: 100%; display: block; cursor: crosshair;"></canvas>
+        </div>
+        
+        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+          Drag the control points on the graph to adjust the Bézier curve. Spring and steps parameters update the visual preview instantly.
+        </div>
+        
+        <button id="btnApplyEasing" class="action-btn" style="width: 100%; background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); color: #000; font-weight: 600;">Apply Easing Curve</button>
+      </div>
+
+      <!-- View 2: Node Graph Visual Pipeline -->
+      <div class="node-graph-container" id="graphViewContainer" style="display: none;">
+        <svg class="node-graph-svg" id="graphConnections"></svg>
+        
+        <!-- Interactive Nodes -->
+        <div class="node-card" id="node-text" style="top: 20px; left: 20px;">
+          <div class="node-title">Text Input <span style="font-size:8px;">IN</span></div>
+          <div style="font-size: 10px; color: var(--text-secondary);">"KINETIC GLYPH"</div>
+          <div class="node-port node-port-out"></div>
+        </div>
+
+        <div class="node-card" id="node-split" style="top: 100px; left: 20px;">
+          <div class="node-title">Split Glyphs</div>
+          <div style="font-size: 10px; color: var(--text-secondary);">Per-Character Stagger</div>
+          <div class="node-port node-port-in"></div>
+          <div class="node-port node-port-out"></div>
+        </div>
+
+        <div class="node-card" id="node-effect" style="top: 180px; left: 20px;">
+          <div class="node-title">Effect Node</div>
+          <div style="font-size: 10px; color: var(--text-secondary); font-weight: 700;" id="node-effect-type">Wave</div>
+          <div class="node-port node-port-in"></div>
+          <div class="node-port node-port-out"></div>
+        </div>
+
+        <div class="node-card" id="node-ease" style="top: 260px; left: 20px;">
+          <div class="node-title">Easing Curve</div>
+          <div style="font-size: 10px; color: var(--text-secondary);" id="node-ease-type">Elastic Out</div>
+          <div class="node-port node-port-in"></div>
+          <div class="node-port node-port-out"></div>
+        </div>
+
+        <div class="node-card" id="node-renderer" style="top: 340px; left: 20px;">
+          <div class="node-title">2D Renderer <span style="font-size:8px;">OUT</span></div>
+          <div style="font-size: 10px; color: var(--text-secondary);" id="node-renderer-type">DOM / CSS</div>
+          <div class="node-port node-port-in"></div>
+        </div>
+
+        <div class="node-card" id="node-custom-script" style="top: 420px; left: 20px; width: 220px; height: auto; z-index: 10;">
+          <div class="node-title" style="background: var(--accent-secondary); color:#000;">Custom Effect Compiler</div>
+          <div style="font-size: 10px; color: var(--text-secondary); margin-bottom: 6px;">Write JavaScript equation below:</div>
+          <textarea id="customEffectCode" style="width: 100%; height: 50px; background: #000; color: #00ff66; border: 1px solid var(--border-color); font-family: monospace; font-size: 10px; border-radius: 4px; padding: 4px; resize: none;">(t, i) => Math.sin(t * Math.PI * 4 + i * 0.5) * -30</textarea>
+          <button id="btnCompileCustomEffect" class="action-btn" style="margin-top: 4px; width: 100%; height: 20px; font-size: 9px; line-height: 1;">Compile & Apply</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Center Panel: Live Preview Workspace -->
+    <main class="workspace">
+      <div class="preview-container">
+        
+        <div class="preview-canvas-wrapper" id="canvasWrapper">
+          <div class="grid-overlay" id="gridOverlay">
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+          </div>
+          <!-- Draggable Transform Origin Handle -->
+          <div class="origin-handle" id="originHandle" style="left: calc(50% - 7px); top: calc(50% - 7px);" title="Transform Origin Handle"></div>
+          
+          <!-- Dashed SVG Path Overlay -->
+          <svg id="svgPathOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: opacity 0.2s; z-index: 1;">
+            <path id="svgPathLine" d="" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6,4"></path>
+          </svg>
+
+          <div id="domTarget" class="anomotion-target-dom">KINETIC GLYPH</div>
+        </div>
+
+        <!-- Video Player Timeline Controls -->
+        <div class="anime-controls">
+          <button class="anime-btn" id="btnRestart" title="Restart">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          </button>
+          <button class="anime-btn" id="btnPlayPause" title="Play / Pause">
+            <svg id="playPauseIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+          <button class="anime-btn" id="btnReverse" title="Reverse Direction">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg>
+          </button>
+          <div class="seek-slider-wrapper">
+            <input type="range" class="seek-slider" id="timelineSeek" min="0" max="100" value="0">
+            <span class="time-display" id="timeDisplay">0.00s</span>
+          </div>
+          <button class="anime-btn" id="btnVoiceMic" title="Voice Reactivity (Microphone)" style="margin-left: 12px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Right Panel: Design & Typography Controls -->
+    <aside class="panel-right">
+      <div class="panel-section">
+        <h3 class="section-title">Presets Catalog</h3>
+        <div class="preset-chip-grid">
+          <div class="preset-chip active" data-preset="wave">Wave</div>
+          <div class="preset-chip" data-preset="glitch">Glitch v2</div>
+          <div class="preset-chip" data-preset="explode">Explode</div>
+          <div class="preset-chip" data-preset="reveal">Reveal</div>
+          <div class="preset-chip" data-preset="float">Float</div>
+          <div class="preset-chip" data-preset="vortex">Vortex</div>
+          <div class="preset-chip" data-preset="distortion">Distortion</div>
+          <div class="preset-chip" data-preset="breathe">Breathe</div>
+          <div class="preset-chip" data-preset="neonSign">Neon Sign</div>
+          <div class="preset-chip" data-preset="waterRipple">Water Ripple</div>
+          <div class="preset-chip" data-preset="leafFall">Leaf Fall</div>
+          <div class="preset-chip" data-preset="scanLine">Scanline</div>
+          <div class="preset-chip" data-preset="dataCorrupt">Data Corrupt</div>
+          <div class="preset-chip" data-preset="vhsRewind">VHS Rewind</div>
+          <div class="preset-chip" data-preset="whisper">Whisper</div>
+          <div class="preset-chip" data-preset="shout">Shout</div>
+          <div class="preset-chip" data-preset="typewriterDelete">Typewriter</div>
+          <div class="preset-chip" data-preset="bounceVoice">bounceVoice</div>
+          <div class="preset-chip" data-preset="particleAssemble">Assembly</div>
+          <div class="preset-chip" data-preset="dissolve">Dissolve</div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="section-title">Direction & Origin</h3>
+        
+        <!-- Compass and Alignment Panel -->
+        <div style="display: flex; gap: 20px; align-items: center;">
+          <div class="compass-control" id="compassWheel" title="Click to set direction">
+            <div class="compass-arrow" id="compassArrow"></div>
+            <div class="compass-dot"></div>
+          </div>
+          
+          <div class="align-grid-selector">
+            <button class="align-btn" data-align="tl" title="Top Left">&#x2196;</button>
+            <button class="align-btn" data-align="tc" title="Top Center">&#x2191;</button>
+            <button class="align-btn" data-align="tr" title="Top Right">&#x2197;</button>
+            <button class="align-btn" data-align="ml" title="Middle Left">&#x2190;</button>
+            <button class="align-btn active" data-align="mc" title="Middle Center">&#x25CB;</button>
+            <button class="align-btn" data-align="mr" title="Middle Right">&#x2192;</button>
+            <button class="align-btn" data-align="bl" title="Bottom Left">&#x2199;</button>
+            <button class="align-btn" data-align="bc" title="Bottom Center">&#x2193;</button>
+            <button class="align-btn" data-align="br" title="Bottom Right">&#x2198;</button>
+          </div>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; margin-top: 12px;">
+          <label style="display: flex; align-items: center; gap: 6px; font-size: 11px; cursor: pointer;">
+            <input type="checkbox" id="chkGridOverlay"> Show Grid Overlay
+          </label>
+          <label style="display: flex; align-items: center; gap: 6px; font-size: 11px; cursor: pointer;">
+            <input type="checkbox" id="chkShowOrigin" checked> Show Origin
+          </label>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="section-title">SVG Text Path Controls</h3>
+        <div class="form-group">
+          <label class="form-label" for="svgPathSelect">Path Preset</label>
+          <select id="svgPathSelect" class="framework-select" style="width: 100%; height: 32px; background: var(--bg-primary);">
+            <option value="none">None (Linear Baseline)</option>
+            <option value="wave">Sinusoidal Wave</option>
+            <option value="circle">Perfect Circle</option>
+            <option value="zigzag">Zig-Zag Path</option>
+            <option value="custom">Custom SVG Path</option>
+          </select>
+        </div>
+        <div class="form-group" id="customPathInputGroup" style="display: none;">
+          <label class="form-label" for="customPathString">Custom SVG Path (d=...)</label>
+          <input type="text" id="customPathString" class="framework-select" style="width:100%; background: var(--bg-primary); font-family: monospace; font-size: 11px;" value="M 10 100 Q 150 20, 300 100 T 590 100">
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+          <label style="display: flex; align-items: center; gap: 6px; font-size: 11px; cursor: pointer;">
+            <input type="checkbox" id="chkShowPathOverlay" checked> Show Path Guide Line
+          </label>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="section-title">Visual Developer Debug</h3>
+        <div class="input-row">
+          <label style="display: flex; align-items: center; gap: 6px; font-size: 11px; cursor: pointer;">
+            <input type="checkbox" id="chkShowFPS"> Show FPS Meter
+          </label>
+          <label style="display: flex; align-items: center; gap: 6px; font-size: 11px; cursor: pointer;">
+            <input type="checkbox" id="chkLogPerformance"> Log Performance
+          </label>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="section-title">Typography & Style</h3>
+        <div class="form-group">
+          <label class="form-label" for="animText">Text Content</label>
+          <textarea id="animText" rows="1">KINETIC GLYPH</textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Renderer Pipeline</label>
+          <div class="segmented-control">
+            <button class="segmented-btn active" id="btnDomRenderer">DOM / CSS</button>
+            <button class="segmented-btn" id="btnCanvasRenderer">Canvas 2D</button>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="form-group">
+            <label class="form-label" for="fontSize">Font Size (rem)</label>
+            <div class="range-wrapper">
+              <input type="range" id="fontSize" min="2" max="6" step="0.2" value="4.5">
+              <span id="val-fontSize">4.5rem</span>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="amplitude">Amplitude (px)</label>
-              <div class="range-wrapper">
-                <input type="range" id="amplitude" min="5" max="100" step="1" value="30">
-                <span id="val-amplitude">30px</span>
-              </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="letterSpacing">Spacing (px)</label>
+            <div class="range-wrapper">
+              <input type="range" id="letterSpacing" min="-10" max="25" step="1" value="-1">
+              <span id="val-letterSpacing">-1px</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="input-row">
+          <div class="form-group">
+            <label class="form-label" for="textColor">Text Color</label>
+            <input type="color" id="textColor" value="#f8fafc">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bgColor">Background Color</label>
+            <input type="color" id="bgColor" value="#040406">
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="form-group">
+            <label class="form-label" for="gradType">Gradient Fill</label>
+            <select id="gradType" class="framework-select" style="width: 100%; height: 32px; background: var(--bg-primary);">
+              <option value="none">Solid Color</option>
+              <option value="linear">Linear Gradient</option>
+              <option value="radial">Radial Gradient</option>
+            </select>
+          </div>
+          <div class="form-group" id="gradAngleGroup">
+            <label class="form-label" for="gradAngle">Gradient Angle</label>
+            <div class="range-wrapper">
+              <input type="range" id="gradAngle" min="0" max="360" step="5" value="135">
+              <span id="val-gradAngle">135°</span>
             </div>
           </div>
         </div>
 
-        <div class="sidebar-section">
-          <h3 class="section-title">Typography & Style</h3>
+        <div class="input-row" id="gradColorsGroup" style="display: none;">
           <div class="form-group">
-            <label class="form-label" for="animText">Text Content</label>
-            <textarea id="animText" rows="2">ANOMOTION MONOREPO</textarea>
+            <label class="form-label" for="gradColor1">Start Color</label>
+            <input type="color" id="gradColor1" value="#8b5cf6">
           </div>
-
           <div class="form-group">
-            <label class="form-label">Renderer Pipeline</label>
-            <div class="segmented-control">
-              <button class="segmented-btn active" id="btnDomRenderer">DOM / CSS</button>
-              <button class="segmented-btn" id="btnCanvasRenderer">Canvas 2D</button>
-              <button class="segmented-btn" id="btnThreeRenderer">Three.js 3D</button>
-              <button class="segmented-btn" id="btnWebGpuRenderer">WebGPU</button>
-            </div>
+            <label class="form-label" for="gradColor2">End Color</label>
+            <input type="color" id="gradColor2" value="#06b6d4">
           </div>
-
-          <div class="input-row">
-            <div class="form-group">
-              <label class="form-label" for="fontSize">Font Size (rem)</label>
-              <div class="range-wrapper">
-                <input type="range" id="fontSize" min="2" max="6" step="0.2" value="4.5">
-                <span id="val-fontSize">4.5rem</span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="letterSpacing">Spacing (px)</label>
-              <div class="range-wrapper">
-                <input type="range" id="letterSpacing" min="-10" max="25" step="1" value="-1">
-                <span id="val-letterSpacing">-1px</span>
-              </div>
-            </div>
-          </div>
-          <div class="input-row">
-            <div class="form-group">
-              <label class="form-label" for="textColor">Text Color</label>
-              <input type="color" id="textColor" value="#ffffff">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="glowColor">Glow Color</label>
-              <input type="color" id="glowColor" value="#0070f3">
-            </div>
+        </div>
+        
+        <div class="input-row">
+          <div class="form-group">
+            <label class="form-label" for="glowColor">Glow Color</label>
+            <input type="color" id="glowColor" value="#8b5cf6">
           </div>
           <div class="form-group">
             <label class="form-label" for="glowBlur">Glow Blur (px)</label>
             <div class="range-wrapper">
-              <input type="range" id="glowBlur" min="0" max="30" step="1" value="0">
+              <input type="range" id="glowBlur" min="0" max="40" step="1" value="0">
               <span id="val-glowBlur">0px</span>
             </div>
           </div>
-          <div class="input-row">
-            <div class="form-group">
-              <label class="form-label" for="glitchColor">Glitch Color</label>
-              <input type="color" id="glitchColor" value="#ff0055">
-            </div>
-            <div class="form-group" style="display: flex; align-items: flex-end; margin-bottom: 20px;">
-              <label class="form-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer; text-transform: none; letter-spacing: 0;">
-                <input type="checkbox" id="mouseInteraction" checked style="width: auto; cursor: pointer;">
-                Cursor Push
-              </label>
-            </div>
-          </div>
         </div>
 
-        <div class="sidebar-section">
-          <h3 class="section-title">Timeline Parameters</h3>
-          <div class="input-row">
-            <div class="form-group">
-              <label class="form-label" for="duration">Duration (s)</label>
-              <div class="range-wrapper">
-                <input type="range" id="duration" min="0.2" max="5.0" step="0.1" value="1.8">
-                <span id="val-duration">1.8s</span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="stagger">Stagger (ms)</label>
-              <div class="range-wrapper">
-                <input type="range" id="stagger" min="0" max="300" step="5" value="50">
-                <span id="val-stagger">50ms</span>
-              </div>
+        <div class="form-group" style="display: flex; align-items: flex-end; margin-bottom: 20px;">
+          <label class="form-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer; text-transform: none; letter-spacing: 0;">
+            <input type="checkbox" id="mouseInteraction" checked style="width: auto; cursor: pointer;">
+            Cursor Push Force (Mouse Interact)
+          </label>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="section-title">Timeline Parameters</h3>
+        <div class="input-row">
+          <div class="form-group">
+            <label class="form-label" for="duration">Duration (s)</label>
+            <div class="range-wrapper">
+              <input type="range" id="duration" min="0.2" max="5.0" step="0.1" value="1.8">
+              <span id="val-duration">1.8s</span>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label" for="easing">Easing Curve</label>
-            <select id="easing">
-              <option value="easeOutElastic">Elastic Out (Penner)</option>
-              <option value="easeInOutQuad">Quad In/Out</option>
-              <option value="easeOutBounce">Bounce Out</option>
-              <option value="linear">Linear</option>
-              <option value="easeOutBack">Back Out</option>
-            </select>
-          </div>
-        </div>
-      </aside>
-
-      <main class="workspace">
-        <div class="preview-container">
-          
-          <div class="preview-canvas-wrapper" id="canvasWrapper">
-            <div id="domTarget" class="anomotion-target-dom">ANOMOTION MONOREPO</div>
-          </div>
-
-          <div class="anime-controls">
-            <button class="anime-btn" id="btnRestart" title="Restart">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-            </button>
-            <button class="anime-btn" id="btnPlayPause" title="Play / Pause">
-              <svg id="playPauseIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-            <button class="anime-btn" id="btnReverse" title="Reverse Direction">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg>
-            </button>
-            <div class="seek-slider-wrapper">
-              <input type="range" class="seek-slider" id="timelineSeek" min="0" max="100" value="0">
-              <span class="time-display" id="timeDisplay">0.00s</span>
+            <label class="form-label" for="stagger">Stagger (ms)</label>
+            <div class="range-wrapper">
+              <input type="range" id="stagger" min="0" max="300" step="5" value="50">
+              <span id="val-stagger">50ms</span>
             </div>
           </div>
         </div>
-
-        <div class="terminal-container">
-          <div class="terminal-header">
-            <span style="font-size: 13px; font-weight: 500;">Usage Blueprint</span>
-            <div class="framework-selector-wrapper">
-              <span style="font-size: 11px; color: var(--text-secondary);">Framework:</span>
-              <select class="framework-select" id="exportFramework">
-                <option value="vanilla">Vanilla JS</option>
-                <option value="react">React Component</option>
-                <option value="vue">Vue 3 Composition</option>
-                <option value="svelte">Svelte 5</option>
-                <option value="cdn">HTML / CDN Script</option>
-              </select>
+        <div class="form-group">
+          <label class="form-label" for="easing">Easing Curve</label>
+          <select id="easing">
+            <option value="easeOutElastic">Elastic Out (Penner)</option>
+            <option value="easeOutExpo">Expo Out</option>
+            <option value="easeInOutQuad">Quad In/Out</option>
+            <option value="easeOutBounce">Bounce Out</option>
+            <option value="linear">Linear</option>
+            <option value="easeOutBack">Back Out</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="panel-section">
+        <h3 class="section-title">Advanced Parameters</h3>
+        <div class="input-row">
+          <div class="form-group">
+            <label class="form-label" for="frequency">Frequency</label>
+            <div class="range-wrapper">
+              <input type="range" id="frequency" min="1" max="15" step="0.5" value="2.0">
+              <span id="val-frequency">2.0</span>
             </div>
           </div>
-          <div class="terminal-body">
-            <pre><code id="codeSnippet" class="code-output"></code></pre>
+          <div class="form-group">
+            <label class="form-label" for="amplitude">Amplitude (px)</label>
+            <div class="range-wrapper">
+              <input type="range" id="amplitude" min="5" max="100" step="1" value="30">
+              <span id="val-amplitude">30px</span>
+            </div>
           </div>
         </div>
-      </main>
-    </div>
-
-
+        <div class="input-row">
+          <div class="form-group">
+            <label class="form-label" for="glitchIntensity">Glitch Intensity</label>
+            <div class="range-wrapper">
+              <input type="range" id="glitchIntensity" min="0.05" max="1.0" step="0.05" value="0.3">
+              <span id="val-glitchIntensity">0.3</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="seed">RNG Seed</label>
+            <div class="range-wrapper">
+              <input type="range" id="seed" min="1" max="100" step="1" value="42">
+              <span id="val-seed">42</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
   </div>
 
   <script type="module" src="./src/main.ts"></script>

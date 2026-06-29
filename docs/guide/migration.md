@@ -1,6 +1,6 @@
 # Migration Guide
 
-Upgrading legacy installations to the new monorepo scoped version of AnomotionJS is simple. This guide outlines namespace overrides, import updates, and architectural changes.
+Upgrading legacy installations to the new monorepo scoped version of AnomotionJS is simple. This guide outlines namespace overrides, import updates, and migration from Glitch v1 to Glitch v2.
 
 ---
 
@@ -29,17 +29,54 @@ Update your package dependency maps in `package.json`:
 
 ---
 
-## 3. Registering Renderers
+## 3. Glitch v1 to Glitch v2 Migration
 
-In previous versions, renderers were loaded automatically inside the main bundle. To reduce output file sizes in simple setups, renderers must now be imported to auto-register:
+The glitch animation effect has been completely rewritten in **v1.0.2** to resolve screen flicker, allow deterministic animations, and support accessibility standards.
+
+### Summary of Changes
+
+| Feature | Glitch v1 | Glitch v2 |
+|---------|-----------|-----------|
+| **Flicker Control** | Jarring layout reflows (updating `top`/`left`) | Zero reflow. GPU-accelerated layers with `will-change: transform`. |
+| **Color Shifts** | Hard color changes | Independent sub-layers using CSS `mix-blend-mode: screen`. |
+| **RNG Randomness** | Uncontrolled `Math.random()` | Seed-based RNG for identical playback. |
+| **Accessibility** | Flickered regardless of systems | Respects system-level `prefers-reduced-motion` settings. |
+
+### API Signature Migration
+
+#### Legacy API (v1.0.1)
+```javascript
+Anomotion.create('.text', {
+  effect: 'glitch',
+  glitchColor: '#ff0055'
+});
+```
+
+#### New API (v1.0.2)
+```javascript
+Anomotion.create('.text', {
+  effect: 'glitch',
+  glitchIntensity: 0.3,
+  glitchTiming: 'triggered', // 'triggered' | 'periodic' | 'continuous'
+  seed: 42,
+  colorChannels: ['#ff0055', '#00ffaa', '#0070f3'],
+  exitDuration: 0.5
+});
+```
+
+---
+
+## 4. Registering Renderers
+
+Renderers must be imported to auto-register:
 
 ### HTML/DOM Renderer
 ```javascript
 import Anomotion from '@eldrex/anomotionjs-core';
-import '@eldrex/anomotionjs-renderer-2d'; // Must import to auto-register 'dom' & 'canvas'
+import '@eldrex/anomotionjs-renderer-2d'; // Registers 'dom' & 'canvas'
 
 Anomotion.create('#header', {
-  renderer: 'dom', // Now registered
+  renderer: 'dom',
   effect: 'wave'
 });
 ```
